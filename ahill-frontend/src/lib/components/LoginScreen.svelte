@@ -105,7 +105,7 @@
           • Регистратор: <span class="text-teal-700 font-semibold">l.hayes</span>
         </button>
         <button type="button" onclick={() => setCredentials('s.bennett')} class="p-2 border border-slate-200 bg-slate-50 text-slate-700 rounded-[6px] hover:bg-teal-50 transition cursor-pointer text-left">
-          • Врач (Терапевт): <span class="text-teal-700 font-semibold">s.bennett</span>
+          • Врач: <span class="text-teal-700 font-semibold">s.bennett</span>
         </button>
         <button type="button" onclick={() => setCredentials('a.morgan')} class="p-2 border border-slate-200 bg-slate-50 text-slate-700 rounded-[6px] hover:bg-teal-50 transition cursor-pointer text-left">
           • Главврач: <span class="text-teal-700 font-semibold">a.morgan</span>

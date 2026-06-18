@@ -27,10 +27,10 @@ export const mockData = {
   ] as Employee[],
 
   users: [
-    { id: 'usr-1', username: 'abramovda', employeeId: 'emp-2', roles: ['director', 'chief_vet', 'vet', 'receptionist'], status: 'active' },
-    { id: 'usr-2', username: 'benidzeei', employeeId: 'emp-4', roles: ['receptionist'], status: 'active' },
-    { id: 'usr-3', username: 'karabanovaea', employeeId: 'emp-3', roles: ['vet'], status: 'active' },
-    { id: 'usr-4', username: 'sokolovap', employeeId: 'emp-1', roles: ['vet', 'chief_vet'], status: 'active' },
+    { id: 'usr-1', username: 'd.carter', employeeId: 'emp-2', roles: ['director', 'chief_vet', 'vet', 'receptionist'], status: 'active' },
+    { id: 'usr-2', username: 'l.hayes', employeeId: 'emp-4', roles: ['receptionist'], status: 'active' },
+    { id: 'usr-3', username: 's.bennett', employeeId: 'emp-3', roles: ['vet'], status: 'active' },
+    { id: 'usr-4', username: 'a.morgan', employeeId: 'emp-1', roles: ['vet', 'chief_vet'], status: 'active' },
     { id: 'usr-5', username: 'bryuhnovv', employeeId: 'emp-7', roles: ['vet'], status: 'active' }
   ] as User[],
 
