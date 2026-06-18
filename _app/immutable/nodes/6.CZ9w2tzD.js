@@ -1,0 +1,1 @@
+import{W as e,it as t,rt as n}from"../chunks/UBaUdXj9.js";import"../chunks/I8rQr1kY.js";import{t as r}from"../chunks/BjWAieW6.js";import{t as i}from"../chunks/Cf_0y98R.js";import{t as a}from"../chunks/CaxOiTJw.js";function o(o,s){t(s,!0),e(()=>{a.activeView=`director-`+r.params.section}),i(o,{}),n()}export{o as component};
