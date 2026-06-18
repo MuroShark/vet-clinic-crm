@@ -8,6 +8,10 @@ const config = {
 	},
 	kit: {
 		// Чистое SPA (ssr=false по проекту): статическая сборка с SPA-fallback на index.html.
+		paths: {
+			base: '/vet-clinic-crm',
+			relative: true
+		},
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',
