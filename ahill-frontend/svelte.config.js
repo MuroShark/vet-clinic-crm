@@ -6,6 +6,10 @@ const config = {
 		// Принудительное включение режима runes для проекта, исключая библиотеки. Можно удалить в Svelte 6.
 		runes: ({ filename }) => (filename.split(/[/\\]/).includes('node_modules') ? undefined : true)
 	},
+	onwarn: (warning, handler) => {
+		if (warning.code.startsWith('a11y-')) return;
+		handler(warning);
+	},
 	kit: {
 		// Чистое SPA (ssr=false по проекту): статическая сборка с SPA-fallback на index.html.
 		paths: {
