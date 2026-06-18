@@ -5,13 +5,18 @@
  */
 
 import type { Role } from './types';
+import { base } from '$app/paths';
 
 export function viewToPath(view: string): string {
-  if (view === 'warehouse-overview') return '/app/warehouse';
-  if (view === 'profile') return '/app/profile';
-  const idx = view.indexOf('-');
-  if (idx === -1) return `/app/${view}`;
-  return `/app/${view.slice(0, idx)}/${view.slice(idx + 1)}`;
+  let path = '';
+  if (view === 'warehouse-overview') path = '/app/warehouse';
+  else if (view === 'profile') path = '/app/profile';
+  else {
+    const idx = view.indexOf('-');
+    if (idx === -1) path = `/app/${view}`;
+    else path = `/app/${view.slice(0, idx)}/${view.slice(idx + 1)}`;
+  }
+  return `${base}${path}`;
 }
 
 /** Роли, имеющие доступ к каждой группе маршрутов верхнего уровня (отражает видимость в Sidebar). */

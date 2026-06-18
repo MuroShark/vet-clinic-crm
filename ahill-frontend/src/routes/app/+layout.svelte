@@ -1,5 +1,6 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
+  import { base } from '$app/paths';
   import { page } from '$app/state';
   import { Check, Info, ShieldAlert } from 'lucide-svelte';
   import { app } from '$lib/stores/app.svelte';
@@ -18,7 +19,7 @@
   // Защита маршрутов: без авторизации — на вход; без прав на раздел — на стартовый раздел роли.
   $effect(() => {
     if (!app.currentUser) {
-      goto('/login', { replaceState: true });
+      goto(`${base}/login`, { replaceState: true });
     } else if (!canAccess(group, app.activeRoles)) {
       goto(viewToPath(app.defaultViewFor(app.activeRoles)), { replaceState: true });
     }
