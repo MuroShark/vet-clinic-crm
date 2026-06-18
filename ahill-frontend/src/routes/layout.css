@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-teal-50: #f0fdfb;
+  --color-teal-100: #ccfbf1;
+  --color-teal-200: #99f6e4;
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0f766e;
+  --color-teal-700: #0f766e;
+  --color-teal-800: #0d5d55;
+  --color-teal-900: #0d2e2b;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-sm text-slate-900 bg-[#F8FAFC] antialiased;
+    font-size: 14px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-semibold text-slate-900 tracking-tight;
+  }
+}
+
+/* Переопределение стилей для печати на термопринтере */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #thermal-receipt-print,
+  #thermal-receipt-print * {
+    visibility: visible;
+  }
+  #thermal-receipt-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm;
+    background: white;
+    color: black;
+    font-size: 12px;
+    padding: 4mm;
+  }
+}

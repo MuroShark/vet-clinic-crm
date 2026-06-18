@@ -1,0 +1,18 @@
+# Секреты и прод-артефакты
+.env
+certbot/
+
+# .NET
+**/bin/
+**/obj/
+
+# Node / SvelteKit
+ahill-frontend/node_modules/
+ahill-frontend/build/
+ahill-frontend/.svelte-kit/
+
+# Прочее
+*.log
+.DS_Store
+
+.claude/

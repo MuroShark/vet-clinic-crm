@@ -1,0 +1,33 @@
+name: Деплой на сервер
+
+# CI/CD через self-hosted runner на сервере (только исходящие соединения к GitHub,
+# открывать входящие порты для деплоя не нужно).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # clean: false — сохраняет untracked-файлы между деплоями
+          # (SSL-сертификаты certbot и сгенерированный .env не затираются)
+          clean: false
+
+      - name: Генерация .env из секретов репозитория
+        run: |
+          cat > .env <<EOF
+          DOMAIN=${{ secrets.DOMAIN }}
+          CERTBOT_EMAIL=${{ secrets.CERTBOT_EMAIL }}
+          SA_PASSWORD=${{ secrets.SA_PASSWORD }}
+          JWT_KEY=${{ secrets.JWT_KEY }}
+          EOF
+
+      - name: Сборка и запуск стека
+        run: |
+          docker compose -f docker-compose.prod.yml up -d --build
+          docker image prune -f

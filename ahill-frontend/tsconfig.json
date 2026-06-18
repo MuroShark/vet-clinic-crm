@@ -1,0 +1,20 @@
+{
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"rewriteRelativeImportExtensions": true,
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"moduleResolution": "bundler"
+	}
+	// Псевдонимы путей (aliases) настраиваются через https://svelte.dev/docs/kit/configuration#alias
+	// за исключением $lib, который настраивается через https://svelte.dev/docs/kit/configuration#files
+	//
+	// Для изменения параметров верхнего уровня, таких как include и exclude, рекомендуется расширять
+	// сгенерированную конфигурацию; см. https://svelte.dev/docs/kit/configuration#typescript
+}
