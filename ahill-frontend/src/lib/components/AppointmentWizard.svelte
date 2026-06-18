@@ -98,7 +98,7 @@
         maxQty: bat ? bat.remainingQuantity + m.quantity : m.quantity
       };
     });
-    apptDiagnoses = appt.diagnoses.map((d) => ({ diagnosisId: d.diagnosisId, isPreliminary: d.isPreliminary, doctorComment: d.doctorComment }));
+    apptDiagnoses = appt.diagnoses.map((d: any) => ({ diagnosisId: d.diagnosisId, isPreliminary: d.isPreliminary, doctorComment: d.doctorComment }));
 
     if (appt.status === 'InProgress') step = 4;
   }
