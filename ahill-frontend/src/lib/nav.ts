@@ -5,9 +5,10 @@
  */
 
 import type { Role } from './types';
-import { base } from '$app/paths';
+import { dev } from '$app/environment';
 
 export function viewToPath(view: string): string {
+  const basePath = dev ? '' : '/vet-clinic-crm';
   let path = '';
   if (view === 'warehouse-overview') path = '/app/warehouse';
   else if (view === 'profile') path = '/app/profile';
@@ -16,7 +17,7 @@ export function viewToPath(view: string): string {
     if (idx === -1) path = `/app/${view}`;
     else path = `/app/${view.slice(0, idx)}/${view.slice(idx + 1)}`;
   }
-  return `${base}${path}`;
+  return `${basePath}${path}`;
 }
 
 /** Роли, имеющие доступ к каждой группе маршрутов верхнего уровня (отражает видимость в Sidebar). */

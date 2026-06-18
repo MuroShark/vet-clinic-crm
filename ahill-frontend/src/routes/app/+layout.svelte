@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import { base } from '$app/paths';
+  import { dev } from '$app/environment';
   import { page } from '$app/state';
   import { Check, Info, ShieldAlert } from 'lucide-svelte';
   import { app } from '$lib/stores/app.svelte';
@@ -11,6 +11,7 @@
   import CashierModal from '$lib/components/CashierModal.svelte';
 
   let { children } = $props();
+  const basePath = dev ? '' : '/vet-clinic-crm';
 
   // Группа берётся из URL (обновляется синхронно с навигацией, не зависит от эффектов страниц).
   const group = $derived(page.url.pathname.split('/')[2] ?? '');
@@ -18,9 +19,8 @@
 
   // Защита маршрутов: без авторизации — на вход; без прав на раздел — на стартовый раздел роли.
   $effect(() => {
-    console.log("Current base:", base);
     if (!app.currentUser) {
-      goto(`${base}/login`, { replaceState: true });
+      goto(`${basePath}/login`, { replaceState: true });
     } else if (!canAccess(group, app.activeRoles)) {
       goto(viewToPath(app.defaultViewFor(app.activeRoles)), { replaceState: true });
     }
