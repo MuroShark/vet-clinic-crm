@@ -33,7 +33,8 @@ export async function api<T = unknown>(path: string, opts: RequestInit = {}): Pr
   // 401 без токена (например, /auth/login) = неверные данные → пробрасываем сообщение сервера ниже.
   if (res.status === 401 && token) {
     setToken(null);
-    if (browser && location.pathname !== '/login') location.href = '/login';
+    const loginPath = '/vet-clinic-crm/login';
+    if (browser && !location.pathname.endsWith('/login')) location.href = loginPath;
     throw new Error('Сессия истекла. Пожалуйста, войдите снова.');
   }
 

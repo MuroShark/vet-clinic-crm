@@ -1,11 +1,11 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { app } from '$lib/stores/app.svelte';
-  import { viewToPath } from '$lib/nav';
+  import { viewToPath, basePath } from '$lib/nav';
 
   $effect(() => {
     if (app.currentUser) goto(viewToPath(app.activeView), { replaceState: true });
-    else goto('/login', { replaceState: true });
+    else goto(`${basePath}/login`, { replaceState: true });
   });
 </script>
 
