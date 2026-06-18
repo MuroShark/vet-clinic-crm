@@ -7,8 +7,9 @@
 import type { Role } from './types';
 import { dev } from '$app/environment';
 
+export const basePath = dev ? '' : '/vet-clinic-crm';
+
 export function viewToPath(view: string): string {
-  const basePath = dev ? '' : '/vet-clinic-crm';
   let path = '';
   if (view === 'warehouse-overview') path = '/app/warehouse';
   else if (view === 'profile') path = '/app/profile';
