@@ -18,6 +18,7 @@
 
   // Защита маршрутов: без авторизации — на вход; без прав на раздел — на стартовый раздел роли.
   $effect(() => {
+    console.log("Current base:", base);
     if (!app.currentUser) {
       goto(`${base}/login`, { replaceState: true });
     } else if (!canAccess(group, app.activeRoles)) {
