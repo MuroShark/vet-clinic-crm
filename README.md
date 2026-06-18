@@ -24,13 +24,13 @@
 
 ```text
 .
-├── AhillBackend/        # ASP.NET Core Web API
+├── VetClinicBackend/        # ASP.NET Core Web API
 │   ├── Auth/            # Сервис JWT токенов и хеширование паролей
 │   ├── Controllers/     # API контроллеры и DTO мапперы
 │   ├── Data/            # EF Core DbContext и сидер базы данных
 │   ├── Dtos/            # Request / response DTOs
 │   └── Models/          # Доменные модели
-├── ahill-frontend/      # SvelteKit SPA
+├── vet-clinic-frontend/      # SvelteKit SPA
 │   └── src/
 │       ├── lib/
 │       │   ├── api/         # Клиент API бэкенда
@@ -54,7 +54,7 @@
 
 ```bash
 cp .env.example .env      # настройте строку подключения и настройки JWT
-cd AhillBackend
+cd VetClinicBackend
 dotnet run
 ```
 
@@ -63,7 +63,7 @@ dotnet run
 ### Frontend
 
 ```bash
-cd ahill-frontend
+cd vet-clinic-frontend
 npm install
 npm run dev
 ```

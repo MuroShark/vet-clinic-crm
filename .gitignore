@@ -7,9 +7,9 @@ certbot/
 **/obj/
 
 # Node / SvelteKit
-ahill-frontend/node_modules/
-ahill-frontend/build/
-ahill-frontend/.svelte-kit/
+vet-clinic-frontend/node_modules/
+vet-clinic-frontend/build/
+vet-clinic-frontend/.svelte-kit/
 
 # Прочее
 *.log

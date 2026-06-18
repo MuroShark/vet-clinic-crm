@@ -12,13 +12,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: cd ahill-frontend && npm install
+      - run: cd vet-clinic-frontend && npm install
       - name: Сборка фронтенда
-        run: cd ahill-frontend && npm run build
+        run: cd vet-clinic-frontend && npm run build
         env:
           VITE_USE_MOCK: ${{ secrets.VITE_USE_MOCK }}
       - name: Деплой на GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./ahill-frontend/build
+          publish_dir: ./vet-clinic-frontend/build

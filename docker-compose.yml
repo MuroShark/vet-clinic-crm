@@ -20,7 +20,7 @@ services:
 
   backend:
     build:
-      context: ./AhillBackend
+      context: ./VetClinicBackend
       dockerfile: Dockerfile
     container_name: vetclinic-backend
     environment:
