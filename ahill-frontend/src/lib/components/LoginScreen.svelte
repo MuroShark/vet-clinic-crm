@@ -10,6 +10,10 @@
   let isLoading = $state(false);
   let errorMsg = $state<string | null>(null);
 
+  $effect(() => {
+    console.log("VITE_USE_MOCK is:", import.meta.env.VITE_USE_MOCK);
+  });
+
   async function handleSubmit(e: SubmitEvent) {
     e.preventDefault();
     isLoading = true;
@@ -19,7 +23,7 @@
       app.loginSuccess(response.user, response.employee);
       await goto(viewToPath(app.activeView));
     } catch (err: any) {
-      errorMsg = err.message || 'Login failed. Please try again.';
+      errorMsg = err.message || 'Ошибка входа. Попробуйте снова.';
     } finally {
       isLoading = false;
     }
@@ -38,8 +42,8 @@
         <span class="font-bold text-white text-3xl select-none">V</span>
       </div>
       <div>
-        <h1 class="text-xl font-bold tracking-tight text-slate-900">Veterinary Clinic</h1>
-        <p class="text-[11px] uppercase tracking-wider text-teal-700 font-bold mt-1">Veterinary Information System</p>
+        <h1 class="text-xl font-bold tracking-tight text-slate-900">Ветеринарная клиника</h1>
+        <p class="text-[11px] uppercase tracking-wider text-teal-700 font-bold mt-1">Информационная система</p>
       </div>
     </div>
 
@@ -52,7 +56,7 @@
 
     <form onsubmit={handleSubmit} class="space-y-4">
       <div class="space-y-1.5 text-xs">
-        <label for="login-user" class="block text-slate-600 font-bold uppercase tracking-wider select-none">Login:</label>
+        <label for="login-user" class="block text-slate-600 font-bold uppercase tracking-wider select-none">Логин:</label>
         <div class="relative">
           <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 pointer-events-none">
             <UserCheck class="w-4 h-4" />
@@ -61,7 +65,7 @@
             id="login-user"
             type="text"
             required
-            placeholder="Enter your login"
+            placeholder="Введите логин"
             bind:value={username}
             class="w-full pl-9 pr-4 py-2.5 border border-slate-300 rounded-[6px] bg-slate-50 text-slate-900 placeholder-slate-400 text-xs focus:outline-none focus:border-teal-700 focus:bg-white focus:ring-1 focus:ring-teal-700/20 transition-colors"
           />
@@ -69,7 +73,7 @@
       </div>
 
       <div class="space-y-1.5 text-xs">
-        <label for="login-pass" class="block text-slate-600 font-bold uppercase tracking-wider select-none">Password:</label>
+        <label for="login-pass" class="block text-slate-600 font-bold uppercase tracking-wider select-none">Пароль:</label>
         <div class="relative">
           <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 pointer-events-none">
             <Key class="w-4 h-4" />
@@ -78,7 +82,7 @@
             id="login-pass"
             type="password"
             required
-            placeholder="Enter your password"
+            placeholder="Введите пароль"
             bind:value={password}
             class="w-full pl-9 pr-4 py-2.5 border border-slate-300 rounded-[6px] bg-slate-50 text-slate-900 placeholder-slate-400 text-xs focus:outline-none focus:border-teal-700 focus:bg-white focus:ring-1 focus:ring-teal-700/20 transition-colors"
           />
@@ -90,24 +94,24 @@
         disabled={isLoading}
         class="w-full bg-[#0F766E] hover:bg-teal-800 text-white py-2.5 rounded-[6px] text-xs font-semibold shadow transition-colors cursor-pointer disabled:opacity-50 mt-2"
       >
-        {isLoading ? 'Authenticating...' : 'Sign In'}
+        {isLoading ? 'Авторизация...' : 'Войти'}
       </button>
     </form>
 
     <div class="pt-5 border-t border-slate-100">
-      <span class="text-[10px] uppercase font-bold text-slate-400 block mb-2.5 tracking-wider text-center">Demo Accounts (password: demo123):</span>
+      <span class="text-[10px] uppercase font-bold text-slate-400 block mb-2.5 tracking-wider text-center">Демо-аккаунты (пароль: demo123):</span>
       <div class="grid grid-cols-2 gap-2 text-[11px]">
-        <button onclick={() => setCredentials('l.hayes')} class="p-2 border border-slate-200 bg-slate-50 text-slate-700 rounded-[6px] hover:bg-teal-50 transition cursor-pointer text-left">
-          • Receptionist: <span class="text-teal-700 font-semibold">l.hayes</span>
+        <button type="button" onclick={() => setCredentials('l.hayes')} class="p-2 border border-slate-200 bg-slate-50 text-slate-700 rounded-[6px] hover:bg-teal-50 transition cursor-pointer text-left">
+          • Регистратор: <span class="text-teal-700 font-semibold">l.hayes</span>
         </button>
-        <button onclick={() => setCredentials('s.bennett')} class="p-2 border border-slate-200 bg-slate-50 text-slate-700 rounded-[6px] hover:bg-teal-50 transition cursor-pointer text-left">
-          • Vet (Therapist): <span class="text-teal-700 font-semibold">s.bennett</span>
+        <button type="button" onclick={() => setCredentials('s.bennett')} class="p-2 border border-slate-200 bg-slate-50 text-slate-700 rounded-[6px] hover:bg-teal-50 transition cursor-pointer text-left">
+          • Врач (Терапевт): <span class="text-teal-700 font-semibold">s.bennett</span>
         </button>
-        <button onclick={() => setCredentials('a.morgan')} class="p-2 border border-slate-200 bg-slate-50 text-slate-700 rounded-[6px] hover:bg-teal-50 transition cursor-pointer text-left">
-          • Chief Vet: <span class="text-teal-700 font-semibold">a.morgan</span>
+        <button type="button" onclick={() => setCredentials('a.morgan')} class="p-2 border border-slate-200 bg-slate-50 text-slate-700 rounded-[6px] hover:bg-teal-50 transition cursor-pointer text-left">
+          • Главврач: <span class="text-teal-700 font-semibold">a.morgan</span>
         </button>
-        <button onclick={() => setCredentials('d.carter')} class="p-2 border border-slate-200 bg-slate-50 text-slate-700 rounded-[6px] hover:bg-teal-50 transition cursor-pointer text-left">
-          • Director: <span class="text-teal-700 font-semibold">d.carter</span>
+        <button type="button" onclick={() => setCredentials('d.carter')} class="p-2 border border-slate-200 bg-slate-50 text-slate-700 rounded-[6px] hover:bg-teal-50 transition cursor-pointer text-left">
+          • Директор: <span class="text-teal-700 font-semibold">d.carter</span>
         </button>
       </div>
     </div>
